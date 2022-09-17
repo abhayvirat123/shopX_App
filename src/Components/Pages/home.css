@@ -4,34 +4,30 @@
     justify-content: space-around;
     background: #9987878c;
     margin-top: 100px;
+   
 }
 
 .sub-card{
     margin: 20px;
+    width: 400px !important;
+    padding: 10px !important;
 }
 
-.css-1qvr50w-MuiTypography-root {
+.card-title{
     height: 80px !important;
     font-size: 20px !important;
 }
 
-/* .css-o69gx8-MuiCardMedia-root{
-    height: 300px !important;
-} */
 
 .heart-cart:hover{
     content: counter(add to cart);
 }
 
-.css-o69gx8-MuiCardMedia-root {
+.card-img {
     width: auto !important;
     margin: auto;
 }
 
-.css-1ri6ub7-MuiPaper-root-MuiCard-root {
-    width: 400px !important;
-    padding: 10px !important;
-}
 .btn-shop{
     display: flex;
     flex-direction: row;

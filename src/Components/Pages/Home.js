@@ -22,6 +22,7 @@ export default function Home({ updateState, products }) {
           return (
             <Card className='sub-card' key={x.id} sx={{ maxWidth: 345 }}>
               <CardHeader
+                className='card-title'
                 title={x.title}
               />
               <CardMedia
@@ -29,6 +30,7 @@ export default function Home({ updateState, products }) {
                 height="194"
                 image={x.images[0]}
                 alt="Paella dish"
+                className='card-img'
               />
               <CardContent>
                 <Typography variant="body2" color="text.secondary">
