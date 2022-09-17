@@ -2,27 +2,36 @@ import { useState } from 'react';
 import './App.css';
 import Products from './data.json';
 import Navbar from './Components/Navbar';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Home from './Components/Pages/Home';
 import Cart from './Components/Cart/Cart';
 import Login from './Components/Login/Login';
 import Mobile from './Components/Mobile-Footer/Mobile';
 import ProductDetails from './Components/Product/ProductDetails';
+import { useLayoutEffect } from 'react';
+import { message } from 'antd';
 
 function App() {
   let [isLoggedin, setIsLoggedin] = useState(false);
   let [cart, setCart] = useState([]);
   let [svalue, setSvalue] = useState("")
-  let [msg,setMsg]=useState(false)
+
+  const Wrapper = ({children}) => {
+    const location = useLocation();
+    useLayoutEffect(() => {
+      document.documentElement.scrollTo(0, 0);
+    }, [location.pathname]);
+    return children
+  }
 
   const handelClick = (item) => {
     if (isLoggedin === true) {
       if (cart.indexOf(item) !== -1) return;
       setCart([...cart, item]);
       console.log(item)
-      alert("The item is added to Your Cart")
+      message.success("The item is added to Your Cart")
     } else {
-      alert("please login...")
+      message.warning('Login Please')
     }
   }
 
@@ -38,7 +47,7 @@ function App() {
   const handleRemove = (id) => {
     const arr = cart.filter((item) => item.id !== id);
     setCart(arr);
-    alert("The item is removed from Your Cart")
+    message.success("The item is removed from Your Cart")
     // handlePrice();
   };
 
@@ -56,14 +65,16 @@ function App() {
 
   return (
     <Router>
+      <Wrapper>
       <Navbar state={cart.length} isLoggedin={isLoggedin} products={Products} handelChange={handelChange} />
       <Routes>
-        <Route path='/' element={<Home updateState={handelClick} msg={msg} products={search} />} />
+        <Route path='/' element={<Home updateState={handelClick} products={search} />} />
         <Route path='/cart' element={<Cart updateState={handleRemove} handelc={handleChange1} item={cart} />} />
-        <Route path='/Login' element={<Login isLoggedin={isLoggedin} setMsg={setMsg} msg={msg} setIsLoggedin={setIsLoggedin} />} />
+        <Route path='/Login' element={<Login isLoggedin={isLoggedin}  setIsLoggedin={setIsLoggedin} />} />
         <Route path='/productdetails/:id' element={<ProductDetails products={search} />} />
       </Routes>
       <Mobile/>
+      </Wrapper>
     </Router>
   );
 }

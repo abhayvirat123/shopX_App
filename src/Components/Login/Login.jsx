@@ -5,7 +5,6 @@ import {
   MDBContainer,
   MDBCard,
   MDBCardBody,
-  // MDBCardImage,
   MDBRow,
   MDBCol,
   MDBIcon,
@@ -14,18 +13,12 @@ import {
 from 'mdb-react-ui-kit';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import './login.css';
-import { Spin } from 'antd';
-// import { useForm } from 'react-hook-form';
+// import { Spin } from 'antd';
+// import CircularProgress from '@mui/material/CircularProgress';
+import { message } from 'antd';
 
 
 function Login({ isLoggedin, setIsLoggedin }) {
-
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm();
-
   let [name, setName] = useState("")
   let [email, setEmail] = useState("")
   let [password, setPassword] = useState("")
@@ -42,9 +35,10 @@ function Login({ isLoggedin, setIsLoggedin }) {
       localStorage.setItem('psw', password);
       setIsLoggedin(true);
       navigate('/')
+      message.success(`Welcome to shopx ${name}`)
      },2000)
   };
-  let username = localStorage.getItem('name');
+  // let username = localStorage.getItem('name');
 
   const logout = () => {
     localStorage.removeItem('name');
@@ -54,7 +48,7 @@ function Login({ isLoggedin, setIsLoggedin }) {
   return (
     <>
       <div style={{ textAlign: 'center',marginTop:"120px" }}>
-        {loading ? (<Spin />) : null }
+      
         {!isLoggedin ? (
           <>
             <MDBContainer className="my-5">
@@ -73,7 +67,7 @@ function Login({ isLoggedin, setIsLoggedin }) {
                         value={name} required id='formControlLg' type='text' size="lg" 
                         
                         />
-                        {/* {errors.username && <p>Username is required.</p>} */}
+                        {loading ? <h1>Loading...</h1> : null }
 
                       <MDBInput wrapperClass='mb-4' label='Email address'
                         onChange={(e) => setEmail(e.target.value)}
@@ -98,7 +92,6 @@ function Login({ isLoggedin, setIsLoggedin }) {
         ) : (
           <>
             <h1>User is logged in</h1>
-            {username}
             <button onClickCapture={logout}>logout user</button>
           </>
         )}
