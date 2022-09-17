@@ -38,12 +38,6 @@ export default function Home({ updateState, products,msg }) {
              <div className='btn-shop'>
               <CardActions disableSpacing>
               <Button variant="contained" onClick={() => updateState(x)}>Add to Cart</Button>
-                  {/* <IconButton className='heart-cart' aria-label="add to favorites">
-                    <FavoriteIcon  onClick={() => updateState(x)} />
-                  </IconButton>
-                  <IconButton aria-label="share">
-                    <ShareIcon />
-                  </IconButton> */}
                 </CardActions>
                 <Link to={`ProductDetails/${x.id}`}><Button variant="outlined">Buy Now</Button></Link>
              </div>

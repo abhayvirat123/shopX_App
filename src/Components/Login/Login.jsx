@@ -11,7 +11,7 @@ import {
   from 'mdb-react-ui-kit';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import './login.css';
-import { Button, Form, Input, message } from 'antd';
+import { Button, Col, Form, Input, message, Row } from 'antd';
 
 
 function Login({ isLoggedin, setIsLoggedin }) {
@@ -99,16 +99,15 @@ function Login({ isLoggedin, setIsLoggedin }) {
                           <Input placeholder='Password' type="password" onChange={(e) => setPassword(e.target.value)}
                             value={password} />
                         </Form.Item>
-                        <Form.Item
-                          wrapperCol={{
-                            offset: 8,
-                            span: 16,
-                          }}
-                        >
-                          <Button type="primary" htmlType="submit">
-                            Submit
+                       <Row>
+                        <Col md={24}>
+                        <Form.Item>
+                          <Button style={{width:"100px",height:"40px"}} className='btn-log' type="primary" htmlType="submit">
+                            Login
                           </Button>
                         </Form.Item>
+                        </Col>
+                       </Row>
                       </Form>
                     </MDBCardBody>
                   </MDBCol>
