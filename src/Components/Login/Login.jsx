@@ -10,33 +10,32 @@ import {
   MDBIcon,
   MDBInput
 }
-from 'mdb-react-ui-kit';
+  from 'mdb-react-ui-kit';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import './login.css';
-// import { Spin } from 'antd';
-// import CircularProgress from '@mui/material/CircularProgress';
-import { message } from 'antd';
+import { Button, Checkbox, Form, Input, message } from 'antd';
 
 
 function Login({ isLoggedin, setIsLoggedin }) {
   let [name, setName] = useState("")
   let [email, setEmail] = useState("")
   let [password, setPassword] = useState("")
-  let [loading,setLoading]=useState(false)
-  
+  let [loading, setLoading] = useState(false)
+
   let navigate = useNavigate()
 
   const login = (e) => {
+    // e.preventDefault();
     setLoading(true)
-     setTimeout(()=>{
-      e.preventDefault();
+    setTimeout(() => {
+      // e.preventDefault();
       localStorage.setItem('name', name);
       localStorage.setItem('email', email);
       localStorage.setItem('psw', password);
       setIsLoggedin(true);
       navigate('/')
       message.success(`Welcome to shopx ${name}`)
-     },2000)
+    }, 2000)
   };
   // let username = localStorage.getItem('name');
 
@@ -47,10 +46,11 @@ function Login({ isLoggedin, setIsLoggedin }) {
 
   return (
     <>
-      <div style={{ textAlign: 'center',marginTop:"120px" }}>
-      
+      <div style={{ textAlign: 'center', marginTop: "120px" }}>
+
         {!isLoggedin ? (
           <>
+            {loading ? <h1>Loading...</h1> : null}
             <MDBContainer className="my-5">
               <MDBCard>
                 <MDBRow className='g-0'>
@@ -61,28 +61,57 @@ function Login({ isLoggedin, setIsLoggedin }) {
                         <span className="h1 fw-bold mb-0">shop-X</span>
                       </div>
                       <h5 className="fw-normal my-4 pb-3" style={{ letterSpacing: '1px' }}>Login to your account</h5>
+                      <Form name="basic" onFinish={login}>
+                        <Form.Item
+                          name="username"
+                          rules={[
+                            {
+                              required: true,
+                              message: 'Please input your username!',
+                            },
+                          ]}
+                        >
 
-                      <MDBInput wrapperClass='mb-4' label='Username'
-                        onChange={(e) => setName(e.target.value)}
-                        value={name} required id='formControlLg' type='text' size="lg" 
-                        
-                        />
-                        {loading ? <h1>Loading...</h1> : null }
+                          <Input placeholder='Username' onChange={(e) => setName(e.target.value)}
+                            value={name} />
+                        </Form.Item>
 
-                      <MDBInput wrapperClass='mb-4' label='Email address'
-                        onChange={(e) => setEmail(e.target.value)}
-                        value={email} id='formControlLg' type='email'
-                        required
-                        invalid= {MDBInput.invalid}
-                        validation= "Please provide your email"
-                        size="lg" />
+                        <Form.Item
+                          name="email"
+                          rules={[
+                            {
+                              required: true,
+                              message: 'Please input your email!',
+                            },
+                          ]}
+                        >
+                          <Input placeholder='Email' type="email" onChange={(e) => setEmail(e.target.value)}
+                            value={email} />
+                        </Form.Item>
 
-                      <MDBInput wrapperClass='mb-4' label='Password'
-                        onChange={(e) => setPassword(e.target.value)}
-                        value={password} id='formControlLg' type='password' size="lg" />
-
-                      <MDBBtn className="mb-4 px-5" color='dark' size='lg' onClick={login}>Login</MDBBtn>
-                      <a className="small text-muted" href="#!">Forgot password?</a>
+                        <Form.Item
+                          name="password"
+                          rules={[
+                            {
+                              required: true,
+                              message: 'Please input your password!',
+                            },
+                          ]}
+                        >
+                          <Input placeholder='Password' type="password" onChange={(e) => setPassword(e.target.value)}
+                            value={password} />
+                        </Form.Item>
+                        <Form.Item
+                          wrapperCol={{
+                            offset: 8,
+                            span: 16,
+                          }}
+                        >
+                          <Button type="primary" htmlType="submit">
+                            Submit
+                          </Button>
+                        </Form.Item>
+                      </Form>
                     </MDBCardBody>
                   </MDBCol>
                 </MDBRow>
