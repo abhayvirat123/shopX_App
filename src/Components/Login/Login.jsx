@@ -18,7 +18,7 @@ import { Spin } from 'antd';
 // import { useForm } from 'react-hook-form';
 
 
-function Login({ isLoggedin, setIsLoggedin, setMsg, msg }) {
+function Login({ isLoggedin, setIsLoggedin }) {
 
   // const {
   //   register,
@@ -41,8 +41,6 @@ function Login({ isLoggedin, setIsLoggedin, setMsg, msg }) {
       localStorage.setItem('email', email);
       localStorage.setItem('psw', password);
       setIsLoggedin(true);
-      setMsg(true)
-      // message.success('This is a success message');
       navigate('/')
      },2000)
   };
