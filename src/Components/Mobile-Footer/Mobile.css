@@ -1,0 +1,25 @@
+.mobile_footer{
+    width: 100%;
+    height: 40px;
+    position: fixed !important;
+    bottom: 0px;
+    background-color: blue;
+    z-index: 1;
+    display: none;
+}
+
+@media screen and (max-width: 500px) {
+    .mobile_footer{
+        display: flex;
+        width: 100%;
+        height: 60px;
+        position: fixed !important;
+        bottom: 0px;
+        background-color: #ededf1;
+        z-index: 1;
+        display: flex;
+        align-content: flex-end;
+        justify-content: space-around;
+        align-items: center;
+    }
+}

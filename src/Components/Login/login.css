@@ -1,0 +1,32 @@
+.card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-width: 0;
+    width: 500px;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1pxsolidrgba(0,0,0,.125);
+    border-radius: 0.5rem;
+    height: 596px;
+    margin: auto;
+}
+
+@media screen and (max-width: 1200px) {
+    .card {
+        width: auto;
+        height: auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1pxsolidrgba(0,0,0,.125);
+        border-radius: 0.5rem;
+    }
+}

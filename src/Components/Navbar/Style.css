@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+}
+
+main {
+    margin: 16px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background: rgb(242 146 46);
+    color: white;
+    font-family: Helvetica;
+    font-weight: 300;
+    position: fixed !important;
+    width: 100%;
+    top: 0px;
+    z-index: 1;
+}
+
+.navbar__title {
+    margin-right: auto;
+    font-size: 150%;
+    padding: 12px 16px;
+}
+
+.navbar__item {
+    padding: 16px 16px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+    
+a{
+    color: rgb(22 0 77) !important;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 500px) {
+.hide-nav{
+    display: none;
+}
+.navbar__item{
+    padding: 10px;
+}
+}
