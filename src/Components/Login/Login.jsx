@@ -1,19 +1,17 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
-  MDBBtn,
   MDBContainer,
   MDBCard,
   MDBCardBody,
   MDBRow,
   MDBCol,
   MDBIcon,
-  MDBInput
 }
   from 'mdb-react-ui-kit';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import './login.css';
-import { Button, Checkbox, Form, Input, message } from 'antd';
+import { Button, Form, Input, message } from 'antd';
 
 
 function Login({ isLoggedin, setIsLoggedin }) {
