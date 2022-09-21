@@ -4,9 +4,13 @@
     justify-content: space-around;
     background: #9987878c;
     margin-top: 100px;
-   
+    margin-bottom: 10px;
 }
 
+.card-head{
+    font-size: 20px !important;
+    height: 80px !important;
+}
 .sub-card{
     margin: 20px;
     width: 400px !important;

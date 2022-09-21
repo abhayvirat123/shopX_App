@@ -6,17 +6,24 @@
     min-width: 0;
     width: 500px;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: #3050d921;
     background-clip: border-box;
     border: 1pxsolidrgba(0,0,0,.125);
     border-radius: 0.5rem;
-    height: 596px;
+    height: 466px;
     margin: auto;
 }
 
 .ant-input{
     height: 40px;
+    border: 1px solid #3454d5a7 !important;
+    border-radius: 5px;
+    /* background-color: #3453d5; */
 }
+
+.ant-input::placeholder {
+    color: rgba(0, 0, 0, 0.715);
+ }
 
 @media screen and (max-width: 1200px) {
     .card {
@@ -28,7 +35,7 @@
         flex-direction: column;
         min-width: 0;
         word-wrap: break-word;
-        background-color: #fff;
+        background-color: #3050d921;
         background-clip: border-box;
         border: 1pxsolidrgba(0,0,0,.125);
         border-radius: 0.5rem;

@@ -35,7 +35,9 @@ function Login({ isLoggedin, setIsLoggedin }) {
       message.success(`Welcome to shopx ${name}`)
     }, 2000)
   };
-  // let username = localStorage.getItem('name');
+  let username = localStorage.getItem('name');
+  let gmail = localStorage.getItem('email');
+  // let pass = localStorage.getItem('password');
 
   const logout = () => {
     localStorage.removeItem('name');
@@ -60,44 +62,16 @@ function Login({ isLoggedin, setIsLoggedin }) {
                       </div>
                       <h5 className="fw-normal my-4 pb-3" style={{ letterSpacing: '1px' }}>Login to your account</h5>
                       <Form name="basic" onFinish={login}>
-                        <Form.Item
-                          name="username"
-                          rules={[
-                            {
-                              required: true,
-                              message: 'Please input your username!',
-                            },
-                          ]}
-                        >
-
-                          <Input placeholder='Username' onChange={(e) => setName(e.target.value)}
-                            value={name} />
+                        <Form.Item name="username" rules={[{ required: true, message: 'Please input your username!'}]}>
+                          <Input placeholder='Username' onChange={(e) => setName(e.target.value)} value={name} />
                         </Form.Item>
 
-                        <Form.Item
-                          name="email"
-                          rules={[
-                            {
-                              required: true,
-                              message: 'Please input your email!',
-                            },
-                          ]}
-                        >
-                          <Input placeholder='Email' type="email" onChange={(e) => setEmail(e.target.value)}
-                            value={email} />
+                        <Form.Item name="email" rules={[{ required: true, message: 'Please input your email!' }]}>
+                          <Input placeholder='Email' type="email" onChange={(e) => setEmail(e.target.value)} value={email} />
                         </Form.Item>
 
-                        <Form.Item
-                          name="password"
-                          rules={[
-                            {
-                              required: true,
-                              message: 'Please input your password!',
-                            },
-                          ]}
-                        >
-                          <Input placeholder='Password' type="password" onChange={(e) => setPassword(e.target.value)}
-                            value={password} />
+                        <Form.Item name="password" rules={[{ required: true, message: 'Please input your password!'}]}>
+                          <Input placeholder='Password' type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
                         </Form.Item>
                        <Row>
                         <Col md={24}>
@@ -117,7 +91,9 @@ function Login({ isLoggedin, setIsLoggedin }) {
           </>
         ) : (
           <>
-            <h1>User is logged in</h1>
+            <h1>User Details</h1> <hr></hr>
+            <input value={username} disabled={true} /> <br /> <hr></hr>
+            <input value={gmail} disabled={true} />  <br/> <hr></hr>
             <button onClickCapture={logout}>logout user</button>
           </>
         )}

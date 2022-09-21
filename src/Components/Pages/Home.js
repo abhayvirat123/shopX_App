@@ -20,7 +20,7 @@ export default function Home({ updateState, products,msg }) {
           return (
             <Card className='sub-card' key={x.id} sx={{ maxWidth: 345 }}>
               <CardHeader
-                style={{fontSize:"20px",height:"80px"}}
+                titleTypographyProps={{fontSize:"20px", height:"80px" }}
                 title={x.title}
               />
               <CardMedia

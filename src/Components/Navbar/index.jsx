@@ -10,7 +10,7 @@ function Navbar({state,handelChange,isLoggedin}) {
     <nav className='navbar'> 
         <Link to='/' className='navbar__title navbar__item'>shop-X</Link>
         <div className='navbar__item hide-nav'><TextField fullWidth label="Search" id="fullWidth" color="secondary" onChange={handelChange} /></div>
-        <Link to='/Login' className='navbar__item hide-nav'>
+        <Link to='/Login' className='navbar__item'>
           {
             isLoggedin?(
               name

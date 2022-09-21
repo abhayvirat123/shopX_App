@@ -16,7 +16,20 @@ function App() {
   let [cart, setCart] = useState([]);
   let [svalue, setSvalue] = useState("")
 
-  const Wrapper = ({children}) => {
+  let handelChange = (e) => {
+    setSvalue(e.target.value)
+    console.log(svalue)
+  }
+
+  let search = Products.filter((x) => {
+    if (svalue === "") {
+      return x
+    } else {
+      return x.title.toLowerCase().includes(svalue)
+    }
+  })
+
+  const Wrapper = ({ children }) => {
     const location = useLocation();
     useLayoutEffect(() => {
       document.documentElement.scrollTo(0, 0);
@@ -51,30 +64,18 @@ function App() {
     // handlePrice();
   };
 
-  let handelChange = (e) => {
-    setSvalue(e.target.value)
-  }
-
-  let search = Products.filter((x) => {
-    if (svalue === "") {
-      return x
-    } else {
-      return x.title.toLowerCase().includes(svalue)
-    }
-  })
-
   return (
     <Router>
-      <Wrapper>
       <Navbar state={cart.length} isLoggedin={isLoggedin} products={Products} handelChange={handelChange} />
-      <Routes>
-        <Route path='/' element={<Home updateState={handelClick} products={search} />} />
-        <Route path='/cart' element={<Cart updateState={handleRemove} handelc={handleChange1} item={cart} />} />
-        <Route path='/Login' element={<Login isLoggedin={isLoggedin}  setIsLoggedin={setIsLoggedin} />} />
-        <Route path='/productdetails/:id' element={<ProductDetails products={search} />} />
-      </Routes>
-      <Mobile/>
+      <Wrapper>
+        <Routes>
+          <Route path='/' element={<Home updateState={handelClick} products={search} />} />
+          <Route path='/cart' element={<Cart updateState={handleRemove} handelc={handleChange1} item={cart} />} />
+          <Route path='/Login' element={<Login isLoggedin={isLoggedin} setIsLoggedin={setIsLoggedin} />} />
+          <Route path='/productdetails/:id' element={<ProductDetails products={search} />} />
+        </Routes>
       </Wrapper>
+      <Mobile />
     </Router>
   );
 }
